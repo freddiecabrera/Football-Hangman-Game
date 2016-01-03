@@ -1,6 +1,6 @@
 # Football-Hangman-Game
 This is a hangman game I am creating for my pre-work at Coding House. The subject will be the top
-100 football players of 205. I feel like this could be fun so I will add more things in the future
+100 football players of 2015. I feel like this could be fun so I will add more things in the future
 such as: Nationality, Birth place, Club etc. Feel free to contribute.
 
 rules (for now):
