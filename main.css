@@ -38,6 +38,7 @@ a:hover {
   font-weight: 300;
 }
 
+/* Start| .description styling */
 .description h1 {
   color: #F36F42;
   text-shadow: 4px 2px #563321;
@@ -60,4 +61,11 @@ a:hover {
   -webkit-border-radius: 5px;
      -moz-border-radius: 5px;
           border-radius: 5px;
+  margin-top: 20px;
+}
+/* Start| .description styling */
+
+.words {
+  text-align: center;
+  margin-top: 50px;
 }
