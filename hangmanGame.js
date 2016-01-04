@@ -2,13 +2,13 @@ var playerNames = [
   "Lionel Messi",
   "Cristiano Ronaldo",
   "Neymar",
-  "Luis Suárez",
+  "Luis Suarez",
   "Robert Lewandowski",
-  "Thomas Müller",
+  "Thomas Muller",
   "Zlatan Ibrahimovic",
   "Manuel Neuer",
-  "Sergio Agüero",
-  "Alexis Sánchez",
+  "Sergio Aguero",
+  "Alexis Sanchez",
   "Paul Pogba",
   "Andres Iniesta",
   "Eden Hazard",
@@ -17,7 +17,7 @@ var playerNames = [
   "Gareth Bale",
   "Carlos Tevez",
   "David de Gea",
-  "James Rodríguez",
+  "James Rodriguez",
   "Ivan Rakitic",
   "Philipp Lahm",
   "Arjen Robben",
@@ -25,7 +25,7 @@ var playerNames = [
   "Sergio Busquets",
   "Javier Mascherano",
   "Mesut Ozil",
-  "Pierre-Emerick Aubameyang",
+  "Aubameyang",
   "Antoine Griezmann",
   "Yaya Toure",
   "David Silva",
@@ -105,3 +105,28 @@ var playerNames = [
 function randomPlayerSelector() {
   return playerNames[Math.floor(Math.random() * playerNames.length + 1)];
 }
+
+
+// jQuery code starts here.
+$(function() {
+
+  // Will give us the correct amount of needed
+  var dashGenerator = function() {
+    var baller = randomPlayerSelector().replace(/ +/g, "").split('');
+    $.each(baller, function(index, val) {
+      $('.words').append('<span class="dash' + index +
+          '">____   </span>')
+        .css(
+          'color', "#FFF8DD");
+    });
+  }
+
+
+  // Will give us a new 'baller'
+  $('button').click(function() {
+    $("span").remove();
+    dashGenerator();
+  });
+
+
+});
