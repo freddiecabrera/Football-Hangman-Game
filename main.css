@@ -50,3 +50,14 @@ a:hover {
 .description h3 {
   color: #FFF8DD;
 }
+
+.description button.btn-large {
+  background-color: #E85771;
+  color: #FFF8DD;
+  padding: 8px 28px;
+  font-size: 15px;
+  line-height: normal;
+  -webkit-border-radius: 5px;
+     -moz-border-radius: 5px;
+          border-radius: 5px;
+}
