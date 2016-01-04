@@ -1,3 +1,5 @@
+@import url(https://fonts.googleapis.com/css?family=Lato:400,300,900)
+
 * {
   box-sizing: border-box;
 }
@@ -8,4 +10,21 @@ body {
 
 img {
   margin-top: 5%;
+}
+
+h5 {
+  position: relative;
+  margin-top: -25px;
+  text-align: center;
+}
+
+a {
+  text-decoration: none;
+  color: #F7E490;
+  font-family: 'Lato', sans-serif;
+  font-weight: 300;
+}
+
+a:hover {
+  text-decoration: none;
 }
