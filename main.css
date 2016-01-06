@@ -48,7 +48,7 @@ a:hover {
   color: #F7E490;
 }
 
-.description h3 {
+.description p {
   color: #FFF8DD;
 }
 
@@ -68,4 +68,8 @@ a:hover {
 .words {
   text-align: center;
   margin-top: 50px;
+}
+
+.input-section{
+  text-align: center;
 }
