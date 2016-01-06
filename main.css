@@ -73,3 +73,28 @@ a:hover {
 .input-section{
   text-align: center;
 }
+
+.container {
+  text-align: center;
+
+}
+
+.pressed-keys span {
+  font-size: 30px;
+  font-style: 'Lato', sans-serif;
+  font-weight: 100;
+  color: #FFF8DD;
+}
+
+.container h1{
+  font-style: 'Lato', sans-serif;
+  font-weight: 300;
+  color: #F7E490;
+}
+
+.current-key span {
+  font-size: 30px;
+  font-style: 'Lato', sans-serif;
+  font-weight: 100;
+  color: #FFF8DD;
+}
