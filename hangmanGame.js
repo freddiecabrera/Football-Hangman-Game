@@ -116,7 +116,7 @@ $(function() {
   // Will give us the correct amount of dashes needed needed
   var dashGenerator = function() {
     baller = randomPlayerSelector().replace(/ +/g, "").split('');
-    $.each(baller, function(index, val) {
+    $.each(baller, function(index) {
       $('.words').append('<span class="dash' + index +
           '">____   </span>')
         .css(
@@ -130,28 +130,28 @@ $(function() {
   // and store the current key stroke aswell.
   // It will also make the screen blink if you push the same key twice
   $(window).keypress(function(e) {
-
-    console.log(String.fromCharCode(e.which));
     var key = String.fromCharCode(e.which);
-
+    $('.current-key span').html('<span>' + key + '<span>');
+    $('.pressed-keys').append('<span>' + key + ', <span>');
     pressedKeys.forEach(function(item) {
       if (key === item) {
         $('body').css('background-color', 'black');
         setInterval(function() {
           $('body').css('background-color', '#3A8B7D');
         }, 300);
-      } else {
-        pressedKeys.push(key);
       }
     });
-
+    pressedKeys.push(key);
   });
 
   // Will give us a new 'baller'
   $('button').click(function() {
-    $("span").remove();
+    $(".words span").remove();
+    $('.current-key span, .pressed-keys span').empty();
     dashGenerator();
+    pressedKeys = [''];
   });
+
 
 
 });
