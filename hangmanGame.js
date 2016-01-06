@@ -106,21 +106,32 @@ function randomPlayerSelector() {
   return playerNames[Math.floor(Math.random() * playerNames.length + 1)];
 }
 
+var pressedKeys = [];
+var currentKey;
 
 // jQuery code starts here.
 $(function() {
 
-  // Will give us the correct amount of needed
+  // Will give us the correct amount of dashes needed needed
   var dashGenerator = function() {
-    var baller = randomPlayerSelector().replace(/ +/g, "").split('');
+    baller = randomPlayerSelector().replace(/ +/g, "").split('');
     $.each(baller, function(index, val) {
       $('.words').append('<span class="dash' + index +
           '">____   </span>')
         .css(
           'color', "#FFF8DD");
     });
+    console.log(baller);
   }
 
+
+
+  $(window).keypress(function(e) {
+    var key = String.fromCharCode(e.which);
+    currentKey = key;
+    pressedKeys.push(key);
+    console.log(key);
+  });
 
   // Will give us a new 'baller'
   $('button').click(function() {
