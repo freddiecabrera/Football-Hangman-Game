@@ -109,6 +109,7 @@ function randomPlayerSelector() {
 // Stores our keystrokes and current key stroke
 var pressedKeys = [''];
 var currentKey;
+var baller;
 
 // jQuery code starts here.
 $(function() {
@@ -126,6 +127,7 @@ $(function() {
   }
 
 
+
   // This will turn the user key into a letter store all inputs
   // and store the current key stroke aswell.
   // It will also make the screen blink if you push the same key twice
@@ -141,6 +143,19 @@ $(function() {
         }, 300);
       }
     });
+
+    baller.forEach(function(item, index) {
+      if (item === key)
+        var element = '.dash' + index;
+      $(element).html(item)
+        .css({
+          'font-size': '30px',
+          'font-style': "'Lato', sans-serif",
+          'font-weight': '100'
+        });
+
+    });
+
     pressedKeys.push(key);
   });
 
