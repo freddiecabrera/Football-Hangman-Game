@@ -165,7 +165,7 @@ $(function() {
 
     // Will replace the dash with the correctly guessed letter
     baller.forEach(function(item, index) {
-      if (item === key) {
+      if (item.toUpperCase() === key.toUpperCase()) {
         var element = '.dash' + index;
         $(element).html(item)
           .css({
@@ -178,7 +178,7 @@ $(function() {
     });
 
     // This will start hanging our man if we guess the wrong letter
-    if (currentLetter !== key) {
+    if (currentLetter.toUpperCase() !== key.toUpperCase()) {
       $('.hangman').html('<img src="' + hangmanPicture +
         '" width="200" height="200">');
       if (lives < hangmanImages.length - 1) {
