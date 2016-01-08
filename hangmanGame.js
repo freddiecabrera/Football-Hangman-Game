@@ -201,6 +201,7 @@ $(function() {
     dashGenerator();
     pressedKeys = [''];
     lives = 0;
+    hangmanPicture = hangmanImages[lives];
 
     $('.hangman').html(
       '<img src="http://i.imgur.com/FrhvF8Y.png" width="200" height="200">'
@@ -215,13 +216,3 @@ $(function() {
 
 
 });
-
-/*
-else if (item !== key) {
-  $('.hangman').html('<img src="' + hangmanPicture +
-    '" width="200" height="200">');
-  if (counter < hangmanImages.length) {
-    counter++;
-  }
-}
-*/
