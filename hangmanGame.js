@@ -101,6 +101,23 @@ var playerNames = [
   "Laurent Koscielny"
 ];
 
+// Hangman url's
+var hangmanImages = [
+  'http://imgur.com/nIFRKNR.png',
+  'http://imgur.com/yM4QvRE.png',
+  'http://imgur.com/7C3nW1T.png',
+  'http://imgur.com/8Q298DQ.png',
+  'http://imgur.com/M0RqwQz.png',
+  'http://imgur.com/LriCrfw.png',
+  'http://imgur.com/4qhBGH5.png',
+  'http://imgur.com/Gt57FK7.png'
+];
+
+
+var lives = 0;
+var hangmanPicture = hangmanImages[lives];
+var currentLetter = '';
+
 // Will give me a random player from our 'playerNames array'
 function randomPlayerSelector() {
   return playerNames[Math.floor(Math.random() * playerNames.length + 1)];
@@ -114,7 +131,9 @@ var baller;
 // jQuery code starts here.
 $(function() {
 
-  // Will give us the correct amount of dashes needed needed
+  $('.hangman').hide();
+
+  // Will give us the correct amount of dashes needed
   var dashGenerator = function() {
     baller = randomPlayerSelector().replace(/ +/g, "").split('');
     $.each(baller, function(index) {
@@ -144,29 +163,65 @@ $(function() {
       }
     });
 
+    // Will replace the dash with the correctly guessed letter
     baller.forEach(function(item, index) {
-      if (item === key)
+      if (item === key) {
         var element = '.dash' + index;
-      $(element).html(item)
-        .css({
-          'font-size': '30px',
-          'font-style': "'Lato', sans-serif",
-          'font-weight': '100'
-        });
-
+        $(element).html(item)
+          .css({
+            'font-size': '30px',
+            'font-style': "'Lato', sans-serif",
+            'font-weight': '100'
+          });
+        currentLetter = item;
+      }
     });
+
+    // This will start hanging our man if we guess the wrong letter
+    if (currentLetter !== key) {
+      $('.hangman').html('<img src="' + hangmanPicture +
+        '" width="200" height="200">');
+      if (lives < hangmanImages.length - 1) {
+        lives++;
+        hangmanPicture = hangmanImages[lives];
+      }
+    }
+
+
 
     pressedKeys.push(key);
   });
 
   // Will give us a new 'baller'
   $('button').click(function() {
+
+    $('.hangman').show();
     $(".words span").remove();
     $('.current-key span, .pressed-keys span').empty();
     dashGenerator();
     pressedKeys = [''];
+    lives = 0;
+
+    $('.hangman').html(
+      '<img src="http://i.imgur.com/FrhvF8Y.png" width="200" height="200">'
+    ).
+    css({
+      'text-align': 'center',
+      'margin-left': '50px'
+    });
+
   });
 
 
 
 });
+
+/*
+else if (item !== key) {
+  $('.hangman').html('<img src="' + hangmanPicture +
+    '" width="200" height="200">');
+  if (counter < hangmanImages.length) {
+    counter++;
+  }
+}
+*/
