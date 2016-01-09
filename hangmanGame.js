@@ -188,6 +188,13 @@ $(function() {
     }
 
 
+    // This will reset the game after you run out of lives
+    if (hangmanImages[7] === hangmanPicture) {
+      setTimeout(function() {
+        $('button').trigger('click');
+      }, 1000);
+    }
+
 
     pressedKeys.push(key);
   });
