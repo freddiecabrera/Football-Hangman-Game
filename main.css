@@ -52,7 +52,7 @@ a:hover {
   color: #FFF8DD;
 }
 
-.description button.btn-large {
+button.btn-large {
   background-color: #E85771;
   color: #FFF8DD;
   padding: 8px 28px;
@@ -62,6 +62,7 @@ a:hover {
      -moz-border-radius: 5px;
           border-radius: 5px;
   margin-top: 20px;
+  margin-bottom: 50px;
 }
 /* Start| .description styling */
 
@@ -76,7 +77,9 @@ a:hover {
 
 .container {
   text-align: center;
-
+  font-size: 30px;
+  font-style: 'Lato', sans-serif;
+  font-weight: 100;
 }
 
 .pressed-keys span {
@@ -97,4 +100,49 @@ a:hover {
   font-style: 'Lato', sans-serif;
   font-weight: 100;
   color: #FFF8DD;
+}
+
+.hangman {
+  text-align: center;
+  margin-left: 50px;
+}
+
+/*Animation starts here*/
+
+
+.gol {
+  color: #49234E;
+  text-align: center;
+}
+.soccer {
+  background: url(http://i.imgur.com/HAzOq6U.png?1);
+  background-size: 100px 100px;
+  height: 100px;
+  width: 100px;
+  position: relative;
+  -webkit-animation:roll 4.5s infinite;
+  -moz-animation:roll 4.5s infinite;
+  animation:roll 4.5s infinite;
+}
+
+@-moz-keyframes roll {
+  0% {left:0px; -webkit-transform: rotate(-360deg);}
+  50% {left:1000px; -webkit-transform: rotate(360deg);}
+  100% {left:0px; -webkit-transform: rotate(-360deg);}
+}
+@-webkit-keyframes roll {
+  0% {left:0px; -webkit-transform: rotate(-360deg);}
+  50% {left:1000px; -webkit-transform: rotate(360deg);}
+  100% {left:0px; -webkit-transform: rotate(-360deg);}
+}
+
+@keyframes roll {
+  0% {left:0px; -webkit-transform: rotate(-360deg);}
+  50% {left:1000px; -webkit-transform: rotate(360deg);}
+  100% {left:0px; -webkit-transform: rotate(-360deg);}
+}
+
+.world-cup {
+  color: #82AE6F;
+  text-align: center;
 }
