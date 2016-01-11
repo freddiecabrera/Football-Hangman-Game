@@ -151,9 +151,11 @@ $(function() {
   // and store the current key stroke aswell.
   // It will also make the screen blink if you push the same key twice
   $(window).keypress(function(e) {
+
+
     var key = String.fromCharCode(e.which);
     $('.current-key span').html('<span>' + key + '<span>');
-    $('.pressed-keys').append('<span>' + key + ', <span>');
+    $('.pressed-keys span').append('<span>' + key + ', <span>');
     pressedKeys.forEach(function(item) {
       if (key === item) {
         $('body').css('background-color', 'black');
@@ -204,7 +206,8 @@ $(function() {
 
     $('.hangman').show();
     $(".words span").remove();
-    $('.current-key span, .pressed-keys span').empty();
+    $('.current-key span').empty();
+    $('.pressed-keys span').empty();
     dashGenerator();
     pressedKeys = [''];
     lives = 0;
