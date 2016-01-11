@@ -110,7 +110,8 @@ var hangmanImages = [
   'http://imgur.com/M0RqwQz.png',
   'http://imgur.com/LriCrfw.png',
   'http://imgur.com/4qhBGH5.png',
-  'http://imgur.com/Gt57FK7.png'
+  'http://imgur.com/Gt57FK7.png',
+  'http://i.imgur.com/GFe1iWT.png?1'
 ];
 
 
@@ -127,6 +128,7 @@ function randomPlayerSelector() {
 var pressedKeys = [''];
 var currentKey;
 var baller;
+var deleted = [];
 
 // jQuery code starts here.
 $(function() {
@@ -147,27 +149,35 @@ $(function() {
 
 
 
-  // This will turn the user key into a letter store all inputs
-  // and store the current key stroke aswell.
-  // It will also make the screen blink if you push the same key twice
+  // This will get the user keystrokes and do something with it below.
   $(window).keypress(function(e) {
 
-
+    // Key will be any letter the user inputs
     var key = String.fromCharCode(e.which);
+
+    // Will store the current key stroke .
+    // Will also make the screen blink if you push the same key twice.
+
+    // Will display current key stroke
     $('.current-key span').html('<span>' + key + '<span>');
-    $('.pressed-keys span').append('<span>' + key + ', <span>');
+
+    // Will display all keystorkes
+    $('.pressed-keys').append('<span>' + key + ', <span>');
+
+
     pressedKeys.forEach(function(item) {
       if (key === item) {
         $('body').css('background-color', 'black');
-        setInterval(function() {
+        setTimeout(function() {
           $('body').css('background-color', '#3A8B7D');
         }, 300);
       }
     });
 
-    // Will replace the dash with the correctly guessed letter
+    // Will replace the dash with the correctly guessed letter and call our letterDelete function
     baller.forEach(function(item, index) {
       if (item.toUpperCase() === key.toUpperCase()) {
+        letterDelete(index);
         var element = '.dash' + index;
         $(element).html(item)
           .css({
@@ -178,6 +188,22 @@ $(function() {
         currentLetter = item;
       }
     });
+
+    // Will delete all the correct guesses and call the winner function
+    function letterDelete(index) {
+      deleted.push(delete baller[index]);
+      winner();
+    }
+    // This checks if you have one the game
+    function winner() {
+      var ballerLength = baller.length;
+      var deletedLength = deleted.length;
+      if (ballerLength === deletedLength) {
+        setTimeout(function() {
+          $('button').trigger('click');
+        }, 1000);
+      }
+    }
 
     // This will start hanging our man if we guess the wrong letter
     if (currentLetter.toUpperCase() !== key.toUpperCase()) {
@@ -191,27 +217,29 @@ $(function() {
 
 
     // This will reset the game after you run out of lives
-    if (hangmanImages[7] === hangmanPicture) {
+    if (hangmanPicture === hangmanImages[8]) {
       setTimeout(function() {
         $('button').trigger('click');
-      }, 1000);
+      }, 300);
     }
 
-
+    // Will push all of our key storkes into our array
     pressedKeys.push(key);
   });
 
+
+
   // Will give us a new 'baller'
   $('button').click(function() {
-
-    $('.hangman').show();
-    $(".words span").remove();
-    $('.current-key span').empty();
-    $('.pressed-keys span').empty();
-    dashGenerator();
-    pressedKeys = [''];
     lives = 0;
     hangmanPicture = hangmanImages[lives];
+    $('.hangman').show();
+    $(".words span").remove();
+    $('.current-key span, .pressed-keys span').empty();
+    dashGenerator();
+    pressedKeys = [''];
+    deleted = [];
+
 
     $('.hangman').html(
       '<img src="http://i.imgur.com/FrhvF8Y.png" width="200" height="200">'
