@@ -134,6 +134,7 @@ var deleted = [];
 $(function() {
 
   $('.hangman').hide();
+  $('.soccer, .gol').hide();
 
   // Will give us the correct amount of dashes needed
   var dashGenerator = function() {
@@ -151,6 +152,7 @@ $(function() {
 
   // This will get the user keystrokes and do something with it below.
   $(window).keypress(function(e) {
+
 
     // Key will be any letter the user inputs
     var key = String.fromCharCode(e.which);
@@ -199,9 +201,11 @@ $(function() {
       var ballerLength = baller.length;
       var deletedLength = deleted.length;
       if (ballerLength === deletedLength) {
+        goal.play();
+        $('.soccer, .gol').show();
         setTimeout(function() {
           $('button').trigger('click');
-        }, 1000);
+        }, 5000);
       }
     }
 
@@ -227,10 +231,12 @@ $(function() {
     pressedKeys.push(key);
   });
 
+  var goal = $('#goal')[0];
 
 
   // Will give us a new 'baller'
   $('button').click(function() {
+    $('.soccer, .gol').hide();
     lives = 0;
     hangmanPicture = hangmanImages[lives];
     $('.hangman').show();
