@@ -53,7 +53,7 @@ var playerNames = [
   { name: 'Willian', hint: 'Came out of Corinthians and now balls out at Chelsea' },
   { name: 'Blaise Matuidi', hint: 'He is the backbone of PSG' },
   { name: 'Edinson Cavani', hint: 'He was sent off for slapping Chile\'s Gonzalo Jara after he put finger up his arse' },
-  { name: 'Miralem Pjanic', hint: 'This Bosnia and Herzegovina player scored three goals and made four assists in nine appearances to help the "Dragons" qualify for their first ever' },
+  { name: 'Miralem Pjanic', hint: 'This Bosnia and Herzegovina player scored three goals and made four assists in nine appearances to help the "Dragons" qualify for their first ever World Cup' },
   { name: 'Raphael Varane', hint: 'This baller will soon take Sergio Ramos\'s spot' },
   { name: 'Vincent Kompany', hint: 'You\'d be scred to go up againts this giant Belgium defender' },
   { name: 'Dani Alves', hint: 'During a match in Spain he once ate a banana that was thrown at him by a racist cunt.' },
