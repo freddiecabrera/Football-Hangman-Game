@@ -101,6 +101,8 @@ var playerNames = [
   { name: 'Laurent Koscielny', hint: 'He is a defender but he can freestyle like a Brazilian' }
 ];
 
+
+
 // Hangman url's
 var hangmanImages = [
   'http://imgur.com/nIFRKNR.png',
@@ -128,6 +130,7 @@ function randomPlayerSelector() {
 var pressedKeys = [''];
 var currentKey;
 var baller;
+var hint;
 var deleted = [];
 
 // jQuery code starts here.
@@ -138,7 +141,10 @@ $(function() {
 
   // Will give us the correct amount of dashes needed
   var dashGenerator = function() {
-    baller = randomPlayerSelector().replace(/ +/g, "").split('');
+    baller = randomPlayerSelector();
+    hint = baller.hint;
+    $('.hint').append('<span>' + hint + '</span>');
+    baller = baller.name.replace(/ +/g, "").split('');
     $.each(baller, function(index) {
       $('.words').append('<span class="dash' + index +
           '">____   </span>')
@@ -241,6 +247,7 @@ $(function() {
     hangmanPicture = hangmanImages[lives];
     $('.hangman').show();
     $(".words span").remove();
+    $('.hint span').remove();
     $('.current-key span, .pressed-keys span').empty();
     dashGenerator();
     pressedKeys = [''];
